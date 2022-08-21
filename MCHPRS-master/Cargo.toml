@@ -1,0 +1,29 @@
+[workspace]
+members = ["crates/proc_macros", "crates/redpiler_graph"]
+
+[package]
+name = "mchprs"
+version = "0.3.0"
+authors = ["StackDoubleFlow <ojaslandge@gmail.com>"]
+edition = "2018"
+description = "A multithreaded minecraft server built for redstone."
+readme = "README.md"
+license = "MIT"
+keywords = ["minecraft", "server", "redstone"]
+repository = "https://github.com/MCHPR/MCHPRS"
+homepage = "https://github.com/MCHPR/MCHPRS"
+
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+]
+
+[profile.dev]
+# MCHPRS runs far too slow without any optimizations to even be usable for testing
+opt-level = 1
+
+[dependencies]
+mchprs_core = { path = "./crates/core" }
+
+[patch.crates-io]
+hematite-nbt = { git = "https://github.com/StackDoubleFlow/hematite_nbt" }
